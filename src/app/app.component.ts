@@ -9,18 +9,18 @@ import QrScanner from 'qr-scanner';
 })
 export class AppComponent implements AfterViewInit {
 
-  @ViewChild('qrvideo') video :HTMLVideoElement | undefined;
-  
+  @ViewChild('qrvideo') video :HTMLVideoElement = new HTMLVideoElement();
+  qrScanner:QrScanner | undefined;
   
   ngAfterViewInit(): void {
-    
+    this.qrScanner = new QrScanner(this.video, (result:string) => alert('decoded qr code:'+ result),);
   }
 
 
   async iniciarScan() {        
     const camaras =await QrScanner.listCameras();
     const tiene=await QrScanner.hasCamera()
-    alert(tiene);    
+    await this.qrScanner!.start()    
   }
 
 
