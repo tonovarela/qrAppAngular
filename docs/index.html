@@ -6,8 +6,16 @@
   
   <script type="module">
     import QrScanner from "https://nimiq.github.io/qr-scanner/qr-scanner.min.js";
+
+    function setResult(result) {
+        
+      scanner.stop();
+      alert(result)
+
+    }
+
     const video = document.getElementById('qr-video');
-    const scanner = new QrScanner(video, result => alert(result),{
+    const scanner = new QrScanner(video, result => setResult(result),{
       onDecodeError: error => {
         camQrResult.textContent = error;
         camQrResult.style.color = 'inherit';
