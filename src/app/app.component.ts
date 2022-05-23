@@ -1,6 +1,7 @@
 
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import QrScanner from 'qr-scanner';
+
 
 @Component({
   selector: 'app-root',
@@ -9,20 +10,41 @@ import QrScanner from 'qr-scanner';
 })
 export class AppComponent implements AfterViewInit {
 
-  @ViewChild('qrvideo') video :HTMLVideoElement = new HTMLVideoElement();
-  qrScanner:QrScanner | undefined;
+  @ViewChild('qrvideo') video :HTMLVideoElement;
+  //qrScanner:QrScanner;
   
-  ngAfterViewInit(): void {
-    this.qrScanner = new QrScanner(this.video, (result:string) => alert('decoded qr code:'+ result),);
+  ngAfterViewInit(): void {    
+   
+
+  
   }
 
 
   async iniciarScan() {        
-    const camaras =await QrScanner.listCameras();
-    const tiene=await QrScanner.hasCamera()
-    await this.qrScanner!.start()    
-  }
+    //const valores = [1,2,3,6];
+    
+    // calculateScanRegion?: (video: HTMLVideoElement) => QrScanner.ScanRegion;
+    // preferredCamera?: QrScanner.FacingMode | QrScanner.DeviceId;
+    // maxScansPerSecond?: number;
+    // highlightScanRegion?: boolean;
+    // highlightCodeOutline?: boolean;
+    // overlay?: HTMLDivElement;
+    
+    // returnDetailedScanResult?: true;);
 
+    QrScanner.WORKER_PATH=".";
+    try { 
+      const scan = new QrScanner(this.video,(result) => {console.log(result)}, 5);    
+    }
+    catch(e){
+      console.log("No hay code");
+    }
+    const tiene=await QrScanner.hasCamera()
+    console.log(tiene);
+    
+//    console.log(this.qrScanner);
+  }
+  
 
   title = 'qrApp';
 }
