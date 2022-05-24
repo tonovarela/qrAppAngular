@@ -19,17 +19,13 @@ export class AppComponent implements AfterViewInit {
     if (!this.tieneCamara) {
       return;
     }
-    const video = document.getElementById('qrvideo');
-    try {
+    const video = document.getElementById('qrvideo');    
       this.qrScanner = new QrScanner(video as HTMLVideoElement, this.desplegarValor, {
-        onDecodeError: (error) => { alert(error) },
+        onDecodeError: (error) => {  },
         highlightCodeOutline: true,
         highlightScanRegion: true
       });
-    }
-    catch (error) {
-      alert(error)
-    }
+    
       
     
     
