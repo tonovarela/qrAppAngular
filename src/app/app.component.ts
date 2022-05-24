@@ -16,12 +16,12 @@ export class AppComponent implements AfterViewInit {
 
   async inicializaCamara() {
     this.tieneCamara = await QrScanner.hasCamera();
-    if (!this.tieneCamara) {  
+    if (!this.tieneCamara) {
       return;
     }
     const video = document.getElementById('qrvideo');
-    this.qrScanner = new QrScanner(video as HTMLVideoElement, this.desplegarValor, {
-      onDecodeError: () => { },
+    this.qrScanner = new QrScanner(video as HTMLVideoElement, (e) => { this.desplegarValor(e) }, {
+      onDecodeError: (error) => { alert(error) },
       highlightCodeOutline: true,
       highlightScanRegion: true
     });
@@ -32,8 +32,8 @@ export class AppComponent implements AfterViewInit {
     alert(result);
   }
 
-  async iniciarScan() {
-    await this.qrScanner.start()
+   iniciarScan() {
+    this.qrScanner.start().then((e) => { console.log('Scanning') }).catch((e) => console.log(e))
   }
 
 }
