@@ -4,42 +4,14 @@
   <base href="/qrAppAngular/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <script type="module">
-    import QrScanner from "https://nimiq.github.io/qr-scanner/qr-scanner.min.js";
-
-    function setResult(result) {
-        
-      scanner.stop();
-      alert(result)
-
-    }
-
-    const video = document.getElementById('qr-video');
-    const scanner = new QrScanner(video, result => setResult(result),{
-      onDecodeError: error => {
-        camQrResult.textContent = error;
-        camQrResult.style.color = 'inherit';
-      },
-        highlightScanRegion: true,
-          highlightCodeOutline: true,
-    });
-
-    
-    scanner.start().then(() => {
-      console.log("Iniciando");
-    });
-  </script>
+  
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="stylesheet" href="styles.ef46db3751d8e999.css"></head>
 
 <body>
   <app-root></app-root>
-
-  <div id="video-container">
-    <video id="qr-video"></video>
-  </div>
-
   
-<script src="runtime.b8c4989313404f5a.js" type="module"></script><script src="polyfills.a354c82b29479235.js" type="module"></script><script src="scripts.73474a6c474d16b4.js" defer></script><script src="main.5422ced1ab9d0f8d.js" type="module"></script>
+  
+<script src="runtime.b8c4989313404f5a.js" type="module"></script><script src="polyfills.a354c82b29479235.js" type="module"></script><script src="scripts.73474a6c474d16b4.js" defer></script><script src="main.245ce02c8990e7db.js" type="module"></script>
 
 </body></html>

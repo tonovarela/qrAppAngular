@@ -7,33 +7,13 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <script type="module">
-    import QrScanner from "https://nimiq.github.io/qr-scanner/qr-scanner.min.js";
-    const video = document.getElementById('qr-video');
-    const scanner = new QrScanner(video, result => alert(result),{
-      onDecodeError: error => {
-        camQrResult.textContent = error;
-        camQrResult.style.color = 'inherit';
-      },
-        highlightScanRegion: true,
-          highlightCodeOutline: true,
-    });
-
-    
-    scanner.start().then(() => {
-      console.log("Iniciando");
-    });
-  </script>
+  
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
   <app-root></app-root>
-
-  <div id="video-container">
-    <video id="qr-video"></video>
-  </div>
-
+  
   
 </body>
 
