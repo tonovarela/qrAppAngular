@@ -35,13 +35,13 @@ export class AppComponent implements AfterViewInit {
     
   }
 
-   desplegarValor=(result)=> {
+   desplegarValor=({data})=> {
     this.qrScanner.stop();
-    alert(result);
+    alert(data);
   }
 
-   iniciarScan() {
-    this.qrScanner.start().then((e) => { alert('Scanning') }).catch((e) =>alert(e))
+   async iniciarScan() {
+    await this.qrScanner.start()
   }
 
 }
