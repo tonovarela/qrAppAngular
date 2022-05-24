@@ -20,20 +20,20 @@ export class AppComponent implements AfterViewInit {
       return;
     }
     const video = document.getElementById('qrvideo');
-    this.qrScanner = new QrScanner(video as HTMLVideoElement, (e) => { this.desplegarValor(e) }, {
+    this.qrScanner = new QrScanner(video as HTMLVideoElement, this.desplegarValor, {
       onDecodeError: (error) => { alert(error) },
       highlightCodeOutline: true,
       highlightScanRegion: true
     });
   }
 
-  desplegarValor(result) {
+   desplegarValor=(result)=> {
     this.qrScanner.stop();
     alert(result);
   }
 
    iniciarScan() {
-    this.qrScanner.start().then((e) => { console.log('Scanning') }).catch((e) => console.log(e))
+    this.qrScanner.start().then((e) => { alert('Scanning') }).catch((e) =>alert(e))
   }
 
 }
