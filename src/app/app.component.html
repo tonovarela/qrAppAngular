@@ -1,9 +1,10 @@
 
-<div *ngIf="tieneCamara;else sinCamara">
     <div id="video-container">
         <video  width="300" style="margin-left: 10px;" id="qrvideo"></video>
     </div>    
-    <button (click)="iniciarScan()">Start---</button>
+<div *ngIf="tieneCamara;else sinCamara">
+
+    <button  (click)="iniciarScan()">Start---</button>
 </div>
 
 <ng-template #sinCamara>
